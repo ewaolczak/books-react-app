@@ -1,6 +1,7 @@
 import BookForm from './components/BookForm/BookForm';
 import BooksList from './components/BooksList/BooksList';
 import { useState } from 'react';
+import { shortid } from 'shortid';
 
 const App = () => {
   const [books, setBooks] = useState([
@@ -9,14 +10,21 @@ const App = () => {
   ]);
 
   const removeBook = (bookId) => {
-    setBooks(books.filter((book) => book.id!== bookId));
+    setBooks(books.filter((book) => book.id !== bookId));
+  };
+
+  const addBook = (newBook) => {
+    setBooks([
+      ...books,
+      { id: shortid(), title: newBook.title, author: newBook.author }
+    ]);
   };
 
   return (
     <div>
       <h1>Book React App</h1>
       <BooksList books={books} removeBook={removeBook} />
-      <BookForm />
+      <BookForm addBook={addBook} />
     </div>
   );
 };
