@@ -1,7 +1,7 @@
-const BookForm = () => {
+const BooksList = () => {
   return(
-    <h2>BookForm</h2>
+    <h2>BooksList</h2>
   )
 }
 
-export default BookForm;
+export default BooksList;

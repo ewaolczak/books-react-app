@@ -1,11 +1,11 @@
-const BooksList = ({ books }) => {
+const BooksList = ({books}) => {
   return (
     <ul>
-      {books.map(book => 
+      {books.map((book) => (
         <li key={book.id}>
           {book.title} by {book.author}
         </li>
-      )}
+      ))}
     </ul>
   );
 };
