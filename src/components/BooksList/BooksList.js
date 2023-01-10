@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const BooksList = ({ books, removeBook }) => {
   return (
     <ul>
@@ -9,6 +11,11 @@ const BooksList = ({ books, removeBook }) => {
       ))}
     </ul>
   );
+};
+
+BooksList.propTypes = {
+  books: PropTypes.array.isRequired,
+  removeBook: PropTypes.func.isRequired
 };
 
 export default BooksList;
