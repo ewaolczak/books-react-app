@@ -1,6 +1,14 @@
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-const BooksList = ({ books, removeBook }) => {
+const BooksList = () => {
+  const books = useSelector((state) => state.books);
+  const dispatch = useDispatch();
+
+const removeBook = bookId => {
+  dispatch({type: 'REMOVE_BOOK', payload: bookId})
+}
+
   return (
     <ul>
       {books.map((book) => (
@@ -11,11 +19,6 @@ const BooksList = ({ books, removeBook }) => {
       ))}
     </ul>
   );
-};
-
-BooksList.propTypes = {
-  books: PropTypes.array.isRequired,
-  removeBook: PropTypes.func.isRequired
 };
 
 export default BooksList;
