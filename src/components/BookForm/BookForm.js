@@ -1,28 +1,29 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { addBookRequest } from '../../redux/booksRedux';
 
 const BookForm = () => {
-  const dispatch = useDispatch();
-
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: 'ADD_BOOK', payload: { title, author } });
+    dispatch(addBookRequest({ title, author }));
     setTitle('');
     setAuthor('');
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      Title:
+      Title:{' '}
       <input
         type='text'
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      Author:
+      Author:{' '}
       <input
         type='text'
         value={author}
